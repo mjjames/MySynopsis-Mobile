@@ -58,6 +58,12 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\portable-net45+win8\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\portable-net45+win8\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Xamarin.Auth.Android">
@@ -65,11 +71,14 @@
     </Reference>
     <Reference Include="Xamarin.QuickUI.Core.Android, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Components\quickui-1.0\lib\android\Xamarin.QuickUI.Core.Android.dll</HintPath>
+      <HintPath>..\Components\quickui-1.0.2\lib\android\Xamarin.QuickUI.Core.Android.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.QuickUI.Platform.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Components\quickui-1.0\lib\android\Xamarin.QuickUI.Platform.Android.dll</HintPath>
+      <HintPath>..\Components\quickui-1.0.2\lib\android\Xamarin.QuickUI.Platform.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.QuickUI.Xaml">
+      <HintPath>..\Components\quickui-1.0.2\lib\android\Xamarin.QuickUI.Xaml.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +89,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
@@ -106,10 +116,14 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="quickui">
       <Visible>False</Visible>
-      <Version>1.0</Version>
+      <Version>1.0.2</Version>
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MySynopsis.BusinessLogic.Mocks\MySynopsis.BusinessLogic.Mocks.csproj">
+      <Project>{4537d704-8f30-4aba-bc86-3aa24dcc38eb}</Project>
+      <Name>MySynopsis.BusinessLogic.Mocks</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MySynopsis.BusinessLogic\MySynopsis.BusinessLogic.csproj">
       <Project>{f98b4244-518b-4d7f-9d92-967640359ab3}</Project>
       <Name>MySynopsis.BusinessLogic</Name>
@@ -126,6 +140,11 @@
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

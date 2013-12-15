@@ -26,6 +26,7 @@ namespace MySynopsis.Android
 		
 		public static void UpdateIdValues()
 		{
+			global::Xamarin.QuickUI.Xaml.Resource.String.library_name = global::MySynopsis.Android.Resource.String.library_name;
 		}
 		
 		public partial class Attribute
@@ -304,11 +305,11 @@ namespace MySynopsis.Android
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f06001b
-			public const int ApplicationName = 2131099675;
+			// aapt resource value: 0x7f06001c
+			public const int ApplicationName = 2131099676;
 			
-			// aapt resource value: 0x7f06001a
-			public const int Hello = 2131099674;
+			// aapt resource value: 0x7f06001b
+			public const int Hello = 2131099675;
 			
 			// aapt resource value: 0x7f060015
 			public const int auth_client_needs_enabling_title = 2131099669;
@@ -387,6 +388,9 @@ namespace MySynopsis.Android
 			
 			// aapt resource value: 0x7f060013
 			public const int common_signin_button_text_long = 2131099667;
+			
+			// aapt resource value: 0x7f06001a
+			public const int library_name = 2131099674;
 			
 			static String()
 			{

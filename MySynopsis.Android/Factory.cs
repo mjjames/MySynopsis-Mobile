@@ -12,6 +12,7 @@ using Android.Widget;
 using Microsoft.WindowsAzure.MobileServices;
 using MySynopsis.BusinessLogic.ViewModels;
 using MySynopsis.BusinessLogic.Services;
+using MySynopsis.BusinessLogic.Mocks;
 
 namespace MySynopsis.Android
 {
@@ -30,8 +31,15 @@ namespace MySynopsis.Android
 
         public static IUserLoginService GetLoginService(Context context)
         {
-            Func<MobileServiceAuthenticationProvider, Task<MobileServiceUser>> authenticate = async (provider) => await ServiceClient.LoginAsync(context, provider);
-            return new UserLoginService(GetUserService(), authenticate);
+            //Func<MobileServiceAuthenticationProvider, Task<MobileServiceUser>> authenticate = async (provider) => await ServiceClient.LoginAsync(context, provider);
+            //return new UserLoginService(GetUserService(), authenticate);
+            var mockService = new MockUserService();
+            mockService.SetExpectedUserId(MySynopsis.BusinessLogic.Mocks.MockUserService.ExpectedUserStatus.UnregisteredUser);
+            Func<MobileServiceAuthenticationProvider, Task<MobileServiceUser>> login = (provider) =>
+           {
+               return Task.FromResult(new MobileServiceUser("56565467546757"));
+           };
+            return new UserLoginService(mockService, login);
         }
 
         private static IUserService GetUserService()

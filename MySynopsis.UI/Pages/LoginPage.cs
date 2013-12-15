@@ -24,7 +24,7 @@ namespace MySynopsis.UI.Pages
             _providerList = new ListView
             {
                 //todo: change this to use a custom cell which has the images etc
-                ItemTemplate = DataTemplate<Cell>.Create(() =>
+                ItemTemplate = new DataTemplate(() =>
                 {
                     var cell = new TextCell
                     {
@@ -84,11 +84,13 @@ namespace MySynopsis.UI.Pages
                 if (register)
                 {
                     Navigation.PushModal(new RegistrationPage());
+                    return;
                 }
                 else
                 {
                     _viewModel.SelectedProvider = null;
                     _viewModel.LoginResult = null;
+                    return;
                 }
             }
             Navigation.Push(new HomePage());

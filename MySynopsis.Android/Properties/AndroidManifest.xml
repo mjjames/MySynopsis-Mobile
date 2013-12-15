@@ -1,15 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" android:versionName="alpha" android:versionCode="1" package="uk.co.mysynopsis.manualentry">
-  <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="15" />
-  <application android:label="mySynopsis" android:icon="@drawable/Icon">
-    <meta-data
-       android:name="com.google.android.gms.version"
-       android:value="@integer/google_play_services_version" />
-  </application>
-  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-  <uses-permission android:name="android.permission.FLASHLIGHT" />
-  <uses-permission android:name="android.permission.INTERNET" />
-
-
+	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="15" />
+	<application android:label="mySynopsis" android:icon="@drawable/Icon">
+		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+	</application>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.FLASHLIGHT" />
+	<uses-permission android:name="android.permission.INTERNET" />
 </manifest>

@@ -49,14 +49,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Xamarin.QuickUI.Core.Android">
-      <HintPath>..\Components\quickui-1.0\lib\android\Xamarin.QuickUI.Core.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.QuickUI.Platform.Android">
-      <HintPath>..\Components\quickui-1.0\lib\android\Xamarin.QuickUI.Platform.Android.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\MySynopsis.BusinessLogic\MySynopsis.BusinessLogic.csproj">
       <Project>{f98b4244-518b-4d7f-9d92-967640359ab3}</Project>
       <Name>MySynopsis.BusinessLogic</Name>
@@ -71,6 +63,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SystemMessages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Xamarin.QuickUI.Core.Android">
+      <HintPath>..\Components\quickui-1.0.2\lib\android\Xamarin.QuickUI.Core.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.QuickUI.Xaml">
+      <HintPath>..\Components\quickui-1.0.2\lib\android\Xamarin.QuickUI.Xaml.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -81,37 +81,49 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <XamarinComponentReference Include="azure-mobile-services">
-      <Visible>False</Visible>
-      <Version>1.0.4</Version>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="quickui">
-      <Visible>False</Visible>
-      <Version>1.0</Version>
-    </XamarinComponentReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Cells\" />
     <Folder Include="ContentPages\" />
     <Folder Include="Models\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.WindowsAzure.MobileServices.iOS, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Components\azure-mobile-services-1.0.4\lib\ios\Microsoft.WindowsAzure.MobileServices.iOS.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Mobile">
+      <HintPath>..\Components\azure-mobile-services-1.1.0\lib\ios\Microsoft.WindowsAzure.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Mobile.Ext">
+      <HintPath>..\Components\azure-mobile-services-1.1.0\lib\ios\Microsoft.WindowsAzure.Mobile.Ext.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Components\azure-mobile-services-1.1.0\lib\ios\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
-    <Reference Include="Xamarin.QuickUI.Core.iOS">
-      <HintPath>..\Components\quickui-1.0\lib\ios\Xamarin.QuickUI.Core.iOS.dll</HintPath>
+    <Reference Include="Xamarin.Auth.iOS">
+      <HintPath>..\Components\azure-mobile-services-1.1.0\lib\ios\Xamarin.Auth.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.QuickUI.Platform.iOS, Version=1.0.5038.28628, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Xamarin.QuickUI.Core.iOS, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Components\quickui-1.0\lib\ios\Xamarin.QuickUI.Platform.iOS.dll</HintPath>
+      <HintPath>..\Components\quickui-1.0.2\lib\ios\Xamarin.QuickUI.Core.iOS.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.QuickUI.Platform.iOS, Version=1.0.5093.2225, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\quickui-1.0.2\lib\ios\Xamarin.QuickUI.Platform.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.QuickUI.Xaml">
+      <HintPath>..\Components\quickui-1.0.2\lib\ios\Xamarin.QuickUI.Xaml.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="azure-mobile-services">
+      <Visible>False</Visible>
+      <Version>1.1.0</Version>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="quickui">
+      <Visible>False</Visible>
+      <Version>1.0.2</Version>
+    </XamarinComponentReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
 </Project>
