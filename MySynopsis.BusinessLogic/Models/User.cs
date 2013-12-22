@@ -23,5 +23,17 @@ namespace MySynopsis.BusinessLogic
         public string Name { get; set; }
         public DateTime SignedUpUtc { get; set; }
         public List<Meter> MeterConfiguration { get; set; }
+
+        public bool IsValid
+        {
+            get
+            {
+                return Id > 0
+                        && !String.IsNullOrWhiteSpace(UserId)
+                        && !String.IsNullOrWhiteSpace(EmailAddress)
+                        && !String.IsNullOrWhiteSpace(Name)
+                        && MeterConfiguration.Any();
+            }
+        }
     }
 }

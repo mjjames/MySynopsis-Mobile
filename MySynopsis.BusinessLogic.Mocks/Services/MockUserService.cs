@@ -267,9 +267,11 @@ namespace MySynopsis.BusinessLogic.Mocks
             }
         }
 
+        public Func<User> PersistAction { get; set; }
+
         public Task<User> Persist(User user)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(PersistAction());
         }
 
         public enum ExpectedUserStatus
