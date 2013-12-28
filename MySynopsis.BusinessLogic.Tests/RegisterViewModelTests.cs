@@ -133,7 +133,7 @@ namespace MySynopsis.BusinessLogic.Tests
         {
             var mockService = new MockUserService();
             var user = GetUser();
-            mockService.PersistAction = () => user;
+            mockService.PersistAction = (usr) => user;
 
             var vm = new RegisterViewModel(mockService, user);
             vm.Name = "Test";

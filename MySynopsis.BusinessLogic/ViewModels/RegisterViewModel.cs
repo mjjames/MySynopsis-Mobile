@@ -155,8 +155,11 @@ namespace MySynopsis.BusinessLogic.ViewModels
                     });
                     break;
 
+            } 
+            if (_confirmSetup != null)
+            {
+                _confirmSetup.RaiseCanExecuteChanged();
             }
-            _confirmSetup.RaiseCanExecuteChanged();
             _optionOneCommand.RaiseCanExecuteChanged();
             _optionTwoCommand.RaiseCanExecuteChanged();
             _optionThreeCommand.RaiseCanExecuteChanged();
