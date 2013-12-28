@@ -43,6 +43,7 @@
     <Compile Include="Models\UserLoginResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Services\DataReadingService.cs" />
     <Compile Include="Services\IDataReadingService.cs" />
     <Compile Include="Services\IUserLoginService.cs" />
     <Compile Include="Services\IUserService.cs" />
