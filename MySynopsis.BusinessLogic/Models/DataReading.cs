@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MySynopsis.iOS.Models
+namespace MySynopsis.BusinessLogic.Models
 {
     public class DataReading
     {

@@ -1,4 +1,5 @@
 ﻿
+using MySynopsis.BusinessLogic.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,10 +15,12 @@ namespace MySynopsis.BusinessLogic.ViewModels
         private User _user;
         private DelegateCommand _recordReadings;
         private bool _isPersisting;
-        public RecordReadingsViewModel(User user)
+        private IDataReadingService _dataReadingService;
+        public RecordReadingsViewModel(User user, IDataReadingService dataReadingService)
         {
             _user = user;
             MeterReadings = new ObservableCollection<DataReadingViewModel>(_user.MeterConfiguration.Select(m => new DataReadingViewModel(m, _user.Id)));
+            _dataReadingService = dataReadingService;
         }
 
         public ObservableCollection<DataReadingViewModel> MeterReadings { get; private set; }
@@ -56,7 +59,7 @@ namespace MySynopsis.BusinessLogic.ViewModels
         private async Task PersistReadings()
         {
             IsPersisting = true;
-            //TODO: persist
+            await _dataReadingService.PersistReadings(MeterReadings.Select(m => m.ToDataReading()));
             IsPersisting = false;
             if (PostPersistAction != null)
             {

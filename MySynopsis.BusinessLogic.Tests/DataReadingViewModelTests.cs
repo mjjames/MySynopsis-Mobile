@@ -1,5 +1,5 @@
-﻿using MySynopsis.BusinessLogic.ViewModels;
-using MySynopsis.iOS.Models;
+﻿using MySynopsis.BusinessLogic.Models;
+using MySynopsis.BusinessLogic.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
