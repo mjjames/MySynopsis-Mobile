@@ -59,6 +59,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataReadingViewModelTests.cs" />
+    <Compile Include="RecordReadingsViewModelTest.cs" />
     <Compile Include="RegisterViewModelTests.cs" />
     <Compile Include="UserLoginServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

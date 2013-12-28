@@ -10,9 +10,11 @@ namespace MySynopsis.BusinessLogic
         public Meter()
         {
             Rates = new List<MeterRate>();
+            Id = Guid.NewGuid();
         }
         public string Name { get; set; }
         public MeterType Type { get; set; }
         public List<MeterRate> Rates { get; set; }
+        public Guid Id { get; set; }
     }
 }
