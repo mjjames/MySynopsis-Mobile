@@ -17,6 +17,10 @@ namespace MySynopsis.BusinessLogic.Models
         public UserLoginResult(MobileServiceUser user)
         {
             User = user;
+            UserDetails = new User
+            {
+                UserId = user.UserId
+            };
         }
 
         public MobileServiceUser User { get; private set; }
@@ -25,7 +29,7 @@ namespace MySynopsis.BusinessLogic.Models
         {
             get
             {
-                return UserDetails == null;
+                return UserDetails.Id == 0;
             }
         }
         public bool AuthenticationFailed { get; private set; }

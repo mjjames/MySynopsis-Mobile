@@ -83,7 +83,8 @@ namespace MySynopsis.UI.Pages
                 var register = await DisplayAlert(SystemMessages.RequiresRegistrationTitle, SystemMessages.RequiresRegistrationMessage, SystemMessages.Signup, SystemMessages.NoThanks);
                 if (register)
                 {
-                    Navigation.PushModal(new RegistrationPage());
+                    Navigation.PopModal();
+                    Navigation.PushModal(PageLocator.Get<RegistrationPage>(_viewModel.LoginResult.UserDetails));
                     return;
                 }
                 else
@@ -93,7 +94,7 @@ namespace MySynopsis.UI.Pages
                     return;
                 }
             }
-            Navigation.Push(new HomePage());
+            Navigation.PopModal();
         }
     }
 }

@@ -28,11 +28,18 @@ namespace MySynopsis.BusinessLogic
         {
             get
             {
-                return Id > 0
-                        && !String.IsNullOrWhiteSpace(UserId)
+                return  !String.IsNullOrWhiteSpace(UserId)
                         && !String.IsNullOrWhiteSpace(EmailAddress)
                         && !String.IsNullOrWhiteSpace(Name)
                         && MeterConfiguration.Any();
+            }
+        }
+
+        public bool IsRegistered
+        {
+            get
+            {
+                return Id > 0 && SignedUpUtc > DateTime.MinValue;
             }
         }
     }

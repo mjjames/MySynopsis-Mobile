@@ -62,11 +62,84 @@ namespace MySynopsis.UI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string ConfirmSetup {
+            get {
+                return ResourceManager.GetString("ConfirmSetup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string EmailAddress {
+            get {
+                return ResourceManager.GetString("EmailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login / Signup.
         /// </summary>
         internal static string LoginTitle {
             get {
                 return ResourceManager.GetString("LoginTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elec, Gas, Water.
+        /// </summary>
+        internal static string QuickSet1 {
+            get {
+                return ResourceManager.GetString("QuickSet1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elec, Water.
+        /// </summary>
+        internal static string QuickSet2 {
+            get {
+                return ResourceManager.GetString("QuickSet2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elec.
+        /// </summary>
+        internal static string QuickSet3 {
+            get {
+                return ResourceManager.GetString("QuickSet3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signup with mySynopsis and track your spending!
+        ///{more text needed}.
+        /// </summary>
+        internal static string RegistrationIntro {
+            get {
+                return ResourceManager.GetString("RegistrationIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration.
+        /// </summary>
+        internal static string RegistrationTitle {
+            get {
+                return ResourceManager.GetString("RegistrationTitle", resourceCulture);
             }
         }
     }

@@ -267,11 +267,11 @@ namespace MySynopsis.BusinessLogic.Mocks
             }
         }
 
-        public Func<User> PersistAction { get; set; }
+        public Func<User, User> PersistAction { get; set; }
 
         public Task<User> Persist(User user)
         {
-            return Task.FromResult(PersistAction());
+            return Task.FromResult(PersistAction(user));
         }
 
         public enum ExpectedUserStatus

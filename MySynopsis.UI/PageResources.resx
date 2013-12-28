@@ -117,7 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ConfirmSetup" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="LoginTitle" xml:space="preserve">
     <value>Login / Signup</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="QuickSet1" xml:space="preserve">
+    <value>Elec, Gas, Water</value>
+  </data>
+  <data name="QuickSet2" xml:space="preserve">
+    <value>Elec, Water</value>
+  </data>
+  <data name="QuickSet3" xml:space="preserve">
+    <value>Elec</value>
+  </data>
+  <data name="RegistrationIntro" xml:space="preserve">
+    <value>Signup with mySynopsis and track your spending!
+{more text needed}</value>
+  </data>
+  <data name="RegistrationTitle" xml:space="preserve">
+    <value>Registration</value>
   </data>
 </root>

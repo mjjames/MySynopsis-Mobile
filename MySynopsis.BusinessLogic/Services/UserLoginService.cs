@@ -12,7 +12,7 @@ namespace MySynopsis.BusinessLogic.Services
     {
         private IUserService _userService;
         private Func<MobileServiceAuthenticationProvider, Task<MobileServiceUser>> _loginUser;
-        public UserLoginService(IUserService userService, Func<MobileServiceAuthenticationProvider, Task<MobileServiceUser>>loginUser)
+        public UserLoginService(IUserService userService, Func<MobileServiceAuthenticationProvider, Task<MobileServiceUser>> loginUser)
         {
             _userService = userService;
             _loginUser = loginUser;
@@ -54,7 +54,11 @@ namespace MySynopsis.BusinessLogic.Services
             {
                 var serviceUser = await _loginUser(authenticationProvider);
                 result = new UserLoginResult(serviceUser);
-                result.UserDetails = await _userService.ByUserId(serviceUser.UserId);
+                var user = await _userService.ByUserId(serviceUser.UserId);
+                if (user != null)
+                {
+                    result.UserDetails = user;
+                }
             }
             catch (Exception ex)
             {

@@ -71,8 +71,8 @@ namespace MySynopsis.BusinessLogic.Tests
             var result = await service.Login(MobileServiceAuthenticationProvider.MicrosoftAccount);
 
             Assert.True(result.RequiresRegistration);
-            Assert.Null(result.UserDetails);
-            Assert.NotNull(result.User);
+            Assert.NotNull(result.UserDetails);
+            Assert.Equal(0, result.UserDetails.Id);
         }
 
         [Fact]

@@ -7,7 +7,12 @@ using Xamarin.QuickUI;
 
 namespace MySynopsis.UI.Pages
 {
-    public class HomePage:ContentPage
+    public class HomePage : ContentPage
     {
+        public HomePage()
+        {
+            Title = "Home";
+            Navigation.PushModal(PageLocator.Get<LoginPage>(this));
+        }
     }
 }

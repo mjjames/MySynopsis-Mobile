@@ -13,11 +13,15 @@ using Microsoft.WindowsAzure.MobileServices;
 using MySynopsis.BusinessLogic.ViewModels;
 using MySynopsis.BusinessLogic.Services;
 using MySynopsis.BusinessLogic.Mocks;
+using MySynopsis.UI;
+using MySynopsis.UI.Pages;
+using MySynopsis.BusinessLogic;
 
 namespace MySynopsis.Android
 {
     public static class Factory
     {
+
         static Factory()
         {
             ServiceClient = new MobileServiceClient("https://synopsis.azure-mobile.net/");
@@ -44,7 +48,14 @@ namespace MySynopsis.Android
 
         private static IUserService GetUserService()
         {
-            return new UserService(ServiceClient);
+            var mockService = new MockUserService();
+            mockService.PersistAction = (User user) =>
+            {
+                user.Id = 6;
+                return user;
+            };
+            return mockService;
+            //return new UserService(ServiceClient);
         }
 
 
@@ -56,6 +67,30 @@ namespace MySynopsis.Android
             {
                 disposibleClient.Dispose();
             }
+        }
+
+        internal static void RegisterPages()
+        {
+
+            PageLocator.Register<HomePage>(delegate
+            {
+                return new HomePage();
+            });
+
+            PageLocator.Register<LoginPage>(delegate(object context)
+            {
+                return new LoginPage(GetLoginViewModel(context as Context));
+            });
+
+            PageLocator.Register<RegistrationPage>(delegate(object state)
+            {
+                return new RegistrationPage(GetRegistrationViewModel(state as User));
+            });
+        }
+
+        private static RegisterViewModel GetRegistrationViewModel(User user)
+        {
+            return new RegisterViewModel(GetUserService(), user);
         }
     }
 }
