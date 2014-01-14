@@ -29,7 +29,8 @@ namespace MySynopsis.Android
             //    EmailAddress = "m@j.com",
             //    UserId = "68767868767868"
             //})));
-            SetPage(new NavigationPage(PageLocator.Get<HomePage>()));
+           
+            SetPage(PageLocator.Get<HomePage>());
         }
     }
 }

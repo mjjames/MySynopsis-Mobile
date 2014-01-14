@@ -179,7 +179,7 @@ namespace MySynopsis.BusinessLogic.ViewModels
             {
                 if (_confirmSetup == null)
                 {
-                    _confirmSetup = new DelegateCommand(async obj => await PersistUserSetup(obj), obj => _user.IsValid);
+                    _confirmSetup = new DelegateCommand(async obj => await PersistUserSetup(_user), obj => _user.IsValid);
                 }
                 return _confirmSetup;
             }

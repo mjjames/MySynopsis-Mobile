@@ -18,7 +18,7 @@ namespace MySynopsis.UI.Pages
             _viewModel = viewModel;
             _viewModel.Title = PageResources.LoginTitle;
             BindingContext = _viewModel;
-            
+
             SetBinding(TitleProperty, new Binding("Title", BindingMode.OneWay));
 
             _providerList = new ListView
@@ -43,58 +43,22 @@ namespace MySynopsis.UI.Pages
             _loading.SetBinding(ActivityIndicator.IsVisibleProperty, new Binding("IsAuthenticating", BindingMode.OneWay));
             SetBinding(IsBusyProperty, new Binding("IsAuthenticating", BindingMode.OneWay));
 
-            _viewModel.PropertyChanged += _viewModel_PropertyChanged;
-
             var layout = new StackLayout
             {
                 Orientation = StackLayout.StackOrientation.Vertical
             };
             layout.Add(_loading);
             layout.Add(_providerList);
-            
+
             Content = layout;
             _viewModel.IsAuthenticating = true;
         }
 
-        private async void _viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        public LoginViewModel ViewModel
         {
-            switch (e.PropertyName)
-            {
-                case "LoginResult":
-                    await LoginResultChanged();
-                    break;
-            }
+            get { return _viewModel; }
         }
 
-        private async Task LoginResultChanged()
-        {
-            if (_viewModel.LoginResult == null)
-            {
-                return;
-            }
-
-            if (_viewModel.LoginResult.AuthenticationFailed)
-            {
-                await DisplayAlert(SystemMessages.AuthenticationFailedTitle, SystemMessages.AuthenticationFailedMessage, SystemMessages.OK, "");
-                return;
-            }
-            if (_viewModel.LoginResult.RequiresRegistration)
-            {
-                var register = await DisplayAlert(SystemMessages.RequiresRegistrationTitle, SystemMessages.RequiresRegistrationMessage, SystemMessages.Signup, SystemMessages.NoThanks);
-                if (register)
-                {
-                    Navigation.PopModal();
-                    Navigation.PushModal(PageLocator.Get<RegistrationPage>(_viewModel.LoginResult.UserDetails));
-                    return;
-                }
-                else
-                {
-                    _viewModel.SelectedProvider = null;
-                    _viewModel.LoginResult = null;
-                    return;
-                }
-            }
-            Navigation.PopModal();
-        }
+      
     }
 }

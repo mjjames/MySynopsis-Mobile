@@ -74,7 +74,7 @@ namespace MySynopsis.Android
 
             PageLocator.Register<HomePage>(delegate
             {
-                return new HomePage();
+                return new HomePage(GetUserService());
             });
 
             PageLocator.Register<LoginPage>(delegate(object context)
@@ -86,6 +86,21 @@ namespace MySynopsis.Android
             {
                 return new RegistrationPage(GetRegistrationViewModel(state as User));
             });
+
+            PageLocator.Register<RecordReadingsPage>(delegate(object state)
+            {
+                return new RecordReadingsPage(GetRecordReadingsViewModel(state as User));
+            });
+        }
+
+        private static RecordReadingsViewModel GetRecordReadingsViewModel(User user)
+        {
+            return new RecordReadingsViewModel(user, GetDataReadingService());
+        }
+
+        private static IDataReadingService GetDataReadingService()
+        {
+            return new DataReadingService(ServiceClient);
         }
 
         private static RegisterViewModel GetRegistrationViewModel(User user)

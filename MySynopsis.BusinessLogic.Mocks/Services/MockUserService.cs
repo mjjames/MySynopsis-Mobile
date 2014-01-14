@@ -271,7 +271,8 @@ namespace MySynopsis.BusinessLogic.Mocks
 
         public Task<User> Persist(User user)
         {
-            return Task.FromResult(PersistAction(user));
+            CurrentUser = PersistAction(user);
+            return Task.FromResult(CurrentUser);
         }
 
         public enum ExpectedUserStatus
@@ -283,6 +284,13 @@ namespace MySynopsis.BusinessLogic.Mocks
             RegisteredUser1Elec1Gas0Water,
             RegisteredUser1Elec0Gas1Water,
             RegisteredUser2Elec1Gas1Water
+        }
+
+
+        public User CurrentUser
+        {
+            get;
+            set;
         }
     }
 }

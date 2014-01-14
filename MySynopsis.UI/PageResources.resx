@@ -138,6 +138,12 @@
   <data name="QuickSet3" xml:space="preserve">
     <value>Elec</value>
   </data>
+  <data name="RecordReading" xml:space="preserve">
+    <value>Record Reading</value>
+  </data>
+  <data name="RecordReadingsTitle" xml:space="preserve">
+    <value>Record New Readings</value>
+  </data>
   <data name="RegistrationIntro" xml:space="preserve">
     <value>Signup with mySynopsis and track your spending!
 {more text needed}</value>

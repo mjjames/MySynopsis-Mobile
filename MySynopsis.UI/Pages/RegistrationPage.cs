@@ -102,13 +102,9 @@ namespace MySynopsis.UI.Pages
             };
             confirmSetup.SetBinding<RegisterViewModel>(Button.CommandProperty, vm => vm.ConfirmSetup);
             layout.AddVertical(confirmSetup);
-
-            _viewModel.PostPersistAction = (user) =>
-            {
-                Navigation.PopModal();
-            };
-
             Content = layout;
         }
+
+        public RegisterViewModel ViewModel { get { return _viewModel; } }
     }
 }

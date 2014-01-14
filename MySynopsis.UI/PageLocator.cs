@@ -14,12 +14,15 @@ namespace MySynopsis.UI
 
         public static T Get<T>(object state = null) where T : class
         {
+            if(!_context.ContainsKey(typeof(T))){
+                throw new Exception(typeof(T).Name + " Not Registered");
+            }
             var creator = _context[typeof(T)];
             if (creator == null)
             {
                 throw new Exception(typeof(T).Name + " Not Registered");
             }
-            return creator(state) as T;
+            return (T)creator(state);
         }
 
         public static void Register<T>(ObjectCreatorWithState<object> objectCreator) where T : class

@@ -41,6 +41,7 @@
     </Compile>
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
+    <Compile Include="Pages\RecordReadingsPage.cs" />
     <Compile Include="Pages\RegistrationPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemMessages.Designer.cs">
@@ -48,6 +49,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SystemMessages.resx</DependentUpon>
     </Compile>
+    <Compile Include="ValueConverters\LongConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MySynopsis.BusinessLogic\MySynopsis.BusinessLogic.csproj">

@@ -125,6 +125,24 @@ namespace MySynopsis.UI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Record Reading.
+        /// </summary>
+        internal static string RecordReading {
+            get {
+                return ResourceManager.GetString("RecordReading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Record New Readings.
+        /// </summary>
+        internal static string RecordReadingsTitle {
+            get {
+                return ResourceManager.GetString("RecordReadingsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Signup with mySynopsis and track your spending!
         ///{more text needed}.
         /// </summary>
