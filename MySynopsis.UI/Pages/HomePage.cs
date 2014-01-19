@@ -10,17 +10,21 @@ using Xamarin.QuickUI;
 
 namespace MySynopsis.UI.Pages
 {
-    public class HomePage : MultiPage<Page>
+    public class HomePage : ContentPage
     {
         
         public HomePage(IUserService userService)
         {
             Title = "Home";
-
+            var layout = new StackLayout();
+            layout.Add(new Label{
+                Text = "No Content"
+            });
+            Content = layout;
+            
             var login = PageLocator.Get<LoginPage>(this);
             login.ViewModel.PropertyChanged += loginViewModelPropertyChanged;
             Navigation.PushModal(login);
-
         }
 
         private async void loginViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -57,7 +61,10 @@ namespace MySynopsis.UI.Pages
                     page.ViewModel.PostPersistAction = (user) =>
                     {
                         var newPage = PageLocator.Get<RecordReadingsPage>(user);
-                        Add(newPage);
+
+                        var tabs = Parent.Parent as TabbedPage;
+                        var navPage = tabs.Children.OfType<NavigationPage>().FirstOrDefault(c => c.Name == "RecordingReading");
+                        navPage.Push(newPage);
                         Navigation.PopModal();
                     };
                     Navigation.PushModal(page);

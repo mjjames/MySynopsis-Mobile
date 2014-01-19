@@ -20,29 +20,46 @@ namespace MySynopsis.UI.Pages
 
             SetBinding(TitleProperty, new Binding("Title", BindingMode.OneWay));
             SetBinding(IsBusyProperty, new Binding("IsPersisting", BindingMode.OneWay));
+            _viewModel.PropertyChanged += async (sender, args) =>{
+                if(args.PropertyName == "IsFaulted" && _viewModel.IsFaulted){
+                    await DisplayAlert("Perist Reading Failure", "Sorry, We were unable to persist your readings at this time. Please try again.", "OK", "");
+                }
+            };
+
             var layout = new GridLayout
             {
                 DefaultColumnSpacing = 10,
-                DefaultRowSpacing = 5
+                DefaultRowSpacing = 20,
+                Padding = new Thickness(5, 10)
             };
-            foreach(var reading in _viewModel.MeterReadings){
+            
+            for (var i = 0; i < _viewModel.MeterReadings.Count; i++)
+            {
+                var reading = _viewModel.MeterReadings[i];
                 layout.AddVertical(new Label
                 {
-                    Text = reading.MeterName
+                    Text = reading.MeterName,
+                    VerticalOptions = LayoutOptions.Center
                 });
-                var readingEntry = new Entry{
-                    BindingContext = reading
+                var readingEntry = new Entry
+                {
+                    BindingContext = reading,
+                    Placeholder = "000000",
+                    VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.FillAndExpand
                 };
                 readingEntry.SetBinding<DataReadingViewModel>(Entry.TextProperty, vm => vm.Reading, BindingMode.TwoWay, new LongConverter());
-                layout.Add(readingEntry);
-                GridLayout.SetColumn(readingEntry, 1);
+                layout.Add(readingEntry, 1, i);
             }
 
-            var persist = new Button{
+            var persist = new Button
+            {
                 Text = PageResources.RecordReading,
             };
             persist.SetBinding<RecordReadingsViewModel>(Button.CommandProperty, vm => vm.RecordReadings);
+            
             layout.AddVertical(persist);
-         }
+            Content = layout;
+        }
     }
 }

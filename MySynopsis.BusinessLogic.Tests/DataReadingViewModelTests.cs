@@ -26,6 +26,20 @@ namespace MySynopsis.BusinessLogic.Tests
         }
 
         [Fact]
+        public void ReadingRaisesNotifiesValueChanged()
+        {
+            var meter = new Meter
+            {
+                Id = Guid.NewGuid(),
+                Name = "Test Meter",
+                Type = MeterType.Electricity
+            };
+
+            var vm = new DataReadingViewModel(meter, 678);
+            Assert.PropertyChanged(vm, "Reading", () => vm.Reading = 567);
+        }
+
+        [Fact]
         public void ToDataReadingMeterIdPopulated()
         {
             var meterId = Guid.NewGuid();

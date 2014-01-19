@@ -8,7 +8,7 @@ using Xamarin.QuickUI.Platform.Android;
 
 namespace MySynopsis.Android
 {
-    [Activity(Label = "mySynopsis", MainLauncher = true, Icon = "@drawable/icon")]//, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "mySynopsis", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait)]
     public class StartupActivity : AndroidActivity
     {
         private static bool _initialised;
@@ -29,8 +29,8 @@ namespace MySynopsis.Android
             //    EmailAddress = "m@j.com",
             //    UserId = "68767868767868"
             //})));
-           
-            SetPage(PageLocator.Get<HomePage>());
+            
+            SetPage(PageLocator.Get<TabbedPage>());
         }
     }
 }

@@ -16,6 +16,7 @@ using MySynopsis.BusinessLogic.Mocks;
 using MySynopsis.UI;
 using MySynopsis.UI.Pages;
 using MySynopsis.BusinessLogic;
+using Xamarin.QuickUI;
 
 namespace MySynopsis.Android
 {
@@ -89,7 +90,19 @@ namespace MySynopsis.Android
 
             PageLocator.Register<RecordReadingsPage>(delegate(object state)
             {
-                return new RecordReadingsPage(GetRecordReadingsViewModel(state as User));
+                var vm = GetRecordReadingsViewModel(state as User);
+                var page = new RecordReadingsPage(vm);
+                vm.PostPersistAction = () => page.DisplayAlert("Persist Reading", "Reading Persisted", "OK", "");
+                return page;
+            });
+
+            PageLocator.Register<TabbedPage>(delegate
+            {
+                return new TabbedPage
+                {
+                    new NavigationPage(PageLocator.Get<HomePage>()){ Title = "Home"},
+                    new NavigationPage(){Title = "New Reading", Name = "RecordingReading"}
+                };
             });
         }
 

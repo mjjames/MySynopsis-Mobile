@@ -57,6 +57,18 @@ namespace MySynopsis.BusinessLogic.Tests
         }
 
         [Fact]
+        public void RecordReadingsNotAvailableWhenIsPersisting()
+        {
+            var user = GetUser();
+            var mockService = new MockDataReadingService();
+            var vm = new RecordReadingsViewModel(user, mockService);
+            vm.MeterReadings.First().Reading = 6780;
+            vm.MeterReadings.Last().Reading = 6785;
+            vm.IsPersisting = true;
+            Assert.False(vm.RecordReadings.CanExecute(null));
+        }
+
+        [Fact]
         public void RecordReadingsAvailableWhenAllReadingsPopulated()
         {
             var user = GetUser();
@@ -66,6 +78,43 @@ namespace MySynopsis.BusinessLogic.Tests
             vm.MeterReadings.Last().Reading = 6785;
 
             Assert.True(vm.RecordReadings.CanExecute(null));
+        }
+
+        [Fact]
+        public void RecordReadingsCanExecuteChangedWhenExistingItemGetsReading()
+        {
+            var user = GetUser();
+            var mockService = new MockDataReadingService();
+            var vm = new RecordReadingsViewModel(user, mockService);
+            var v = 0;
+            vm.RecordReadings.CanExecuteChanged += (sender, args) =>
+            {
+                v++;
+            };
+            vm.MeterReadings.First().Reading = 6780;
+            Assert.Equal(1, v);
+        }
+
+        [Fact]
+        public void RecordReadingsCanExecuteChangedWhenNewItemGetsReading()
+        {
+            var user = GetUser();
+            var mockService = new MockDataReadingService();
+            var vm = new RecordReadingsViewModel(user, mockService);
+            var v = 0;
+            vm.RecordReadings.CanExecuteChanged += (sender, args) =>
+            {
+                v++;
+            };
+            var newVM = new DataReadingViewModel(new Meter
+            {
+                Id = Guid.NewGuid(),
+                Name = "Test",
+                Type = MeterType.Gas
+            }, 12346);
+            vm.MeterReadings.Add(newVM);
+            newVM.Reading = 12346;
+            Assert.Equal(1, v);
         }
 
         [Fact]
