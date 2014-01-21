@@ -29,7 +29,7 @@ namespace MySynopsis.BusinessLogic.Tests
         {
             return new User
             {
-                Id = 1,
+                Id = Guid.NewGuid(),
                 SignedUpUtc = DateTime.Now,
                 UserId = "4567897897987"
             };

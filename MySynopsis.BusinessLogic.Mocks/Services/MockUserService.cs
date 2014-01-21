@@ -48,7 +48,7 @@ namespace MySynopsis.BusinessLogic.Mocks
                 return Task.FromResult(new User
                 {
                     EmailAddress = "test@test.com",
-                    Id = 4,
+                    Id = Guid.NewGuid(),
                     MeterConfiguration ={
                         new Meter{
                             Name = "Office Elec",
@@ -102,7 +102,7 @@ namespace MySynopsis.BusinessLogic.Mocks
                 return Task.FromResult(new User
                 {
                     EmailAddress = "test@test.com",
-                    Id = 4,
+                    Id = Guid.NewGuid(),
                     MeterConfiguration ={
                         new Meter{
                             Name = "Office Elec",
@@ -142,7 +142,7 @@ namespace MySynopsis.BusinessLogic.Mocks
                 return Task.FromResult(new User
                 {
                     EmailAddress = "test@test.com",
-                    Id = 4,
+                    Id = Guid.NewGuid(),
                     MeterConfiguration ={
                         new Meter{
                             Name = "Office Elec",
@@ -182,7 +182,7 @@ namespace MySynopsis.BusinessLogic.Mocks
                 return Task.FromResult(new User
                 {
                     EmailAddress = "test@test.com",
-                    Id = 4,
+                    Id = Guid.NewGuid(),
                     MeterConfiguration ={
                         new Meter{
                             Name = "Office Elec",

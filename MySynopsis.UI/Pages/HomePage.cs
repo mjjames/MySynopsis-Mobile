@@ -49,6 +49,7 @@ namespace MySynopsis.UI.Pages
             if (viewModel.LoginResult.AuthenticationFailed)
             {
                 await DisplayAlert(SystemMessages.AuthenticationFailedTitle, SystemMessages.AuthenticationFailedMessage, SystemMessages.OK, "");
+                viewModel.SelectedProvider = null;
                 return;
             }
             if (viewModel.LoginResult.RequiresRegistration)

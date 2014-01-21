@@ -25,7 +25,7 @@ namespace MySynopsis.Android
 
         static Factory()
         {
-            ServiceClient = new MobileServiceClient("https://synopsis.azure-mobile.net/");
+            ServiceClient = new MobileServiceClient("https://mysynopsis.azure-mobile.net/");
         }
         public static IMobileServiceClient ServiceClient { get; private set; }
 
@@ -36,27 +36,27 @@ namespace MySynopsis.Android
 
         public static IUserLoginService GetLoginService(Context context)
         {
-            //Func<MobileServiceAuthenticationProvider, Task<MobileServiceUser>> authenticate = async (provider) => await ServiceClient.LoginAsync(context, provider);
-            //return new UserLoginService(GetUserService(), authenticate);
-            var mockService = new MockUserService();
-            mockService.SetExpectedUserId(MySynopsis.BusinessLogic.Mocks.MockUserService.ExpectedUserStatus.UnregisteredUser);
-            Func<MobileServiceAuthenticationProvider, Task<MobileServiceUser>> login = (provider) =>
-           {
-               return Task.FromResult(new MobileServiceUser("56565467546757"));
-           };
-            return new UserLoginService(mockService, login);
+            Func<MobileServiceAuthenticationProvider, Task<MobileServiceUser>> authenticate = async (provider) => await ServiceClient.LoginAsync(context, provider);
+            return new UserLoginService(GetUserService(), authenticate);
+           // var mockService = new MockUserService();
+           // mockService.SetExpectedUserId(MySynopsis.BusinessLogic.Mocks.MockUserService.ExpectedUserStatus.UnregisteredUser);
+           // Func<MobileServiceAuthenticationProvider, Task<MobileServiceUser>> login = (provider) =>
+           //{
+           //    return Task.FromResult(new MobileServiceUser("56565467546757"));
+           //};
+           // return new UserLoginService(mockService, login);
         }
 
         private static IUserService GetUserService()
         {
-            var mockService = new MockUserService();
-            mockService.PersistAction = (User user) =>
-            {
-                user.Id = 6;
-                return user;
-            };
-            return mockService;
-            //return new UserService(ServiceClient);
+            //var mockService = new MockUserService();
+            //mockService.PersistAction = (User user) =>
+            //{
+            //    user.Id = 6;
+            //    return user;
+            //};
+            //return mockService;
+            return new UserService(ServiceClient);
         }
 
 
@@ -70,7 +70,7 @@ namespace MySynopsis.Android
             }
         }
 
-        internal static void RegisterPages()
+        internal static void RegisterPages(Context context)
         {
 
             PageLocator.Register<HomePage>(delegate
@@ -78,9 +78,9 @@ namespace MySynopsis.Android
                 return new HomePage(GetUserService());
             });
 
-            PageLocator.Register<LoginPage>(delegate(object context)
+            PageLocator.Register<LoginPage>(delegate(object state)
             {
-                return new LoginPage(GetLoginViewModel(context as Context));
+                return new LoginPage(GetLoginViewModel(context));
             });
 
             PageLocator.Register<RegistrationPage>(delegate(object state)

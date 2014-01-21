@@ -29,7 +29,7 @@ namespace MySynopsis.BusinessLogic.Models
         {
             get
             {
-                return UserDetails.Id == 0;
+                return UserDetails.Id == Guid.Empty;
             }
         }
         public bool AuthenticationFailed { get; private set; }

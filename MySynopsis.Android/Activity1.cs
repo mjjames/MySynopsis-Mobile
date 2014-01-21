@@ -1,4 +1,5 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using MySynopsis.UI;
@@ -19,7 +20,7 @@ namespace MySynopsis.Android
             QuickUI.Init(this, bundle);
             if (!_initialised)
             {
-                Factory.RegisterPages();
+                Factory.RegisterPages(this);
                 _initialised = true;
             }
             //SetPage(new NavigationPage(new TestPage()));

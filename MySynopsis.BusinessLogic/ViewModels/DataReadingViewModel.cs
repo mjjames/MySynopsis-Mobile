@@ -10,9 +10,9 @@ namespace MySynopsis.BusinessLogic.ViewModels
     public class DataReadingViewModel : ViewModelBase
     {
         private Meter _meter;
-        private long _userId;
+        private Guid _userId;
         private long _reading;
-        public DataReadingViewModel(Meter meter, long userId)
+        public DataReadingViewModel(Meter meter, Guid userId)
         {
             _meter = meter;
             _userId = userId;

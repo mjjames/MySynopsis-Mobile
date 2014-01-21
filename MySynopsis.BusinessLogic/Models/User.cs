@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MySynopsis.BusinessLogic.JsonConverters;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +16,7 @@ namespace MySynopsis.BusinessLogic
         /// <summary>
         /// The storage service's identifier
         /// </summary>
-        public long Id { get; set; }
+        public Guid Id { get; set; }
         /// <summary>
         /// The user id returned by the mobile service
         /// </summary>
@@ -22,6 +24,8 @@ namespace MySynopsis.BusinessLogic
         public string EmailAddress { get; set; }
         public string Name { get; set; }
         public DateTime SignedUpUtc { get; set; }
+
+        [JsonConverter(typeof(ListConverter<Meter>))]
         public List<Meter> MeterConfiguration { get; set; }
 
         public bool IsValid
@@ -39,7 +43,7 @@ namespace MySynopsis.BusinessLogic
         {
             get
             {
-                return Id > 0 && SignedUpUtc > DateTime.MinValue;
+                return Id != null && SignedUpUtc > DateTime.MinValue;
             }
         }
     }

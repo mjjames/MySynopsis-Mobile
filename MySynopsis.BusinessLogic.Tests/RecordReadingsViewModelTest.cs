@@ -25,7 +25,7 @@ namespace MySynopsis.BusinessLogic.Tests
         {
             var user = new User
             {
-                Id = 7,
+                Id = Guid.NewGuid(),
                 EmailAddress = "test@test.com",
                 Name = "Test",
                 SignedUpUtc = DateTime.UtcNow,
@@ -111,7 +111,7 @@ namespace MySynopsis.BusinessLogic.Tests
                 Id = Guid.NewGuid(),
                 Name = "Test",
                 Type = MeterType.Gas
-            }, 12346);
+            }, Guid.NewGuid());
             vm.MeterReadings.Add(newVM);
             newVM.Reading = 12346;
             Assert.Equal(1, v);

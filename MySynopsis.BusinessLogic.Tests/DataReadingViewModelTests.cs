@@ -21,7 +21,7 @@ namespace MySynopsis.BusinessLogic.Tests
                 Type = MeterType.Electricity
             };
 
-            var vm = new DataReadingViewModel(meter, 678);
+            var vm = new DataReadingViewModel(meter, Guid.NewGuid());
             Assert.Equal(meter.Name, vm.MeterName);
         }
 
@@ -34,22 +34,23 @@ namespace MySynopsis.BusinessLogic.Tests
                 Name = "Test Meter",
                 Type = MeterType.Electricity
             };
-
-            var vm = new DataReadingViewModel(meter, 678);
-            Assert.PropertyChanged(vm, "Reading", () => vm.Reading = 567);
+            var guid = Guid.NewGuid();
+            var vm = new DataReadingViewModel(meter, guid);
+            Assert.PropertyChanged(vm, "Reading", () => vm.Reading = 12345);
         }
 
         [Fact]
         public void ToDataReadingMeterIdPopulated()
         {
             var meterId = Guid.NewGuid();
+            var userId = Guid.NewGuid();
             var reading = new DataReading
                         {
-                            Id = 5,
+                            Id = Guid.NewGuid(),
                             MeterId = meterId,
                             Reading = 654321,
                             TimeStampUtc = DateTime.UtcNow,
-                            UserId = 678
+                            UserId = userId
                         };
             var meter = new Meter
             {
@@ -58,7 +59,7 @@ namespace MySynopsis.BusinessLogic.Tests
                 Type = MeterType.Electricity
             };
 
-            var vm = new DataReadingViewModel(meter, 678)
+            var vm = new DataReadingViewModel(meter, userId)
             {
                 Reading = 6789
             };
@@ -71,13 +72,14 @@ namespace MySynopsis.BusinessLogic.Tests
         public void ToDataReadingReadingPopulated()
         {
             var meterId = Guid.NewGuid();
+            var userId = Guid.NewGuid();
             var reading = new DataReading
             {
-                Id = 5,
+                Id = Guid.NewGuid(),
                 MeterId = meterId,
                 Reading = 654321,
                 TimeStampUtc = DateTime.UtcNow,
-                UserId = 678
+                UserId = userId
             };
             var meter = new Meter
             {
@@ -86,7 +88,7 @@ namespace MySynopsis.BusinessLogic.Tests
                 Type = MeterType.Electricity
             };
 
-            var vm = new DataReadingViewModel(meter, 678)
+            var vm = new DataReadingViewModel(meter, userId)
             {
                 Reading = 6789
             };
@@ -99,13 +101,15 @@ namespace MySynopsis.BusinessLogic.Tests
         public void ToDataReadingUserIdPopulated()
         {
             var meterId = Guid.NewGuid();
+            var userId = Guid.NewGuid();
+
             var reading = new DataReading
             {
-                Id = 5,
+                Id = Guid.NewGuid(),
                 MeterId = meterId,
                 Reading = 654321,
                 TimeStampUtc = DateTime.UtcNow,
-                UserId = 678
+                UserId = userId
             };
             var meter = new Meter
             {
@@ -113,27 +117,28 @@ namespace MySynopsis.BusinessLogic.Tests
                 Name = "Test Meter",
                 Type = MeterType.Electricity
             };
-
-            var vm = new DataReadingViewModel(meter, 678)
+            
+            var vm = new DataReadingViewModel(meter, userId)
             {
                 Reading = 6789
             };
 
             var result = vm.ToDataReading();
-            Assert.Equal(678, result.UserId);
+            Assert.Equal(userId, result.UserId);
         }
 
         [Fact]
         public void ToDataReadingDateTimePopulated()
         {
             var meterId = Guid.NewGuid();
+            var userId = Guid.NewGuid();
             var reading = new DataReading
             {
-                Id = 5,
+                Id = Guid.NewGuid(),
                 MeterId = meterId,
                 Reading = 654321,
                 TimeStampUtc = DateTime.UtcNow,
-                UserId = 678
+                UserId = userId
             };
             var meter = new Meter
             {
@@ -142,7 +147,7 @@ namespace MySynopsis.BusinessLogic.Tests
                 Type = MeterType.Electricity
             };
 
-            var vm = new DataReadingViewModel(meter, 678)
+            var vm = new DataReadingViewModel(meter, userId)
             {
                 Reading = 6789
             };

@@ -19,7 +19,7 @@ namespace MySynopsis.BusinessLogic.Services
 
         public async Task<User> Persist(User user) {
             var table = _serviceClient.GetTable<User>();
-            if (user.Id == 0)
+            if (user.Id == Guid.Empty)
             {
                 await table.InsertAsync(user);
                 var users = await table.Where(u => u.UserId == _serviceClient.CurrentUser.UserId).ToEnumerableAsync();
