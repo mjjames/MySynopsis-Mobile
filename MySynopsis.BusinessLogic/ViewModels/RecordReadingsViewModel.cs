@@ -110,6 +110,7 @@ namespace MySynopsis.BusinessLogic.ViewModels
                 {
                     PostPersistAction();
                 }
+                ClearReadingValues();
             }
             catch (Exception)
             {
@@ -117,6 +118,14 @@ namespace MySynopsis.BusinessLogic.ViewModels
             }
             IsPersisting = false;
 
+        }
+
+        private void ClearReadingValues()
+        {
+            foreach (var reading in MeterReadings)
+            {
+                reading.Reading = 0;
+            }
         }
     }
 }

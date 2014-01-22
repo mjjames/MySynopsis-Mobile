@@ -165,5 +165,18 @@ namespace MySynopsis.BusinessLogic.Tests
             vm.RecordReadings.Execute(null);
             Assert.False(executed);
         }
+
+        [Fact]
+        public void ReadingValuesClearedAfterSuccessfulPersist()
+        {
+            var mockService = new MockDataReadingService();
+            var user = GetUser();
+            mockService.PersistAction = (readings) => { };
+
+            var vm = new RecordReadingsViewModel(user, mockService);
+            vm.MeterReadings.First().Reading = 6780;
+            vm.RecordReadings.Execute(null);
+            Assert.Equal(0, vm.MeterReadings.First().Reading);
+        }
     }
 }
