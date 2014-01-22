@@ -72,7 +72,7 @@ namespace MySynopsis.BusinessLogic.Tests
 
             Assert.True(result.RequiresRegistration);
             Assert.NotNull(result.UserDetails);
-            Assert.Equal(0, result.UserDetails.Id);
+            Assert.Equal(Guid.Empty, result.UserDetails.Id);
         }
 
         [Fact]
