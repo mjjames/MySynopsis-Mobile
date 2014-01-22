@@ -61,12 +61,7 @@ namespace MySynopsis.UI.Pages
                     var page = PageLocator.Get<RegistrationPage>(viewModel.LoginResult.UserDetails);
                     page.ViewModel.PostPersistAction = (user) =>
                     {
-                        var newPage = PageLocator.Get<RecordReadingsPage>(user);
-
-                        var tabs = Parent.Parent as TabbedPage;
-                        var navPage = tabs.Children.OfType<NavigationPage>().FirstOrDefault(c => c.Name == "RecordingReading");
-                        navPage.Push(newPage);
-                        Navigation.PopModal();
+                        PopulateRecordReadingsTab(user);
                     };
                     Navigation.PushModal(page);
                     return;
@@ -78,6 +73,16 @@ namespace MySynopsis.UI.Pages
                     return;
                 }
             }
+            PopulateRecordReadingsTab(viewModel.LoginResult.UserDetails);
+        }
+
+        private void PopulateRecordReadingsTab(BusinessLogic.User user)
+        {
+            var newPage = PageLocator.Get<RecordReadingsPage>(user);
+
+            var tabs = Parent.Parent as TabbedPage;
+            var navPage = tabs.Children.OfType<NavigationPage>().FirstOrDefault(c => c.Name == "RecordingReading");
+            navPage.Push(newPage);
             Navigation.PopModal();
         }
     }
