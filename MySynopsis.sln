@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySynopsis.Android", "MySynopsis.Android\MySynopsis.Android.csproj", "{7DCA7B12-AA4A-4202-9BAE-622640AD0158}"
 EndProject
@@ -84,10 +84,12 @@ Global
 		{F316DD9E-8D5B-4088-8E23-0164D793C517}.Debug|Any CPU.ActiveCfg = Debug|iPhone
 		{F316DD9E-8D5B-4088-8E23-0164D793C517}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{F316DD9E-8D5B-4088-8E23-0164D793C517}.Debug|iPhone.Build.0 = Debug|iPhone
+		{F316DD9E-8D5B-4088-8E23-0164D793C517}.Debug|iPhone.Deploy.0 = Debug|iPhone
 		{F316DD9E-8D5B-4088-8E23-0164D793C517}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
 		{F316DD9E-8D5B-4088-8E23-0164D793C517}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
 		{F316DD9E-8D5B-4088-8E23-0164D793C517}.Debug|Mixed Platforms.ActiveCfg = Debug|iPhone
 		{F316DD9E-8D5B-4088-8E23-0164D793C517}.Debug|Mixed Platforms.Build.0 = Debug|iPhone
+		{F316DD9E-8D5B-4088-8E23-0164D793C517}.Debug|Mixed Platforms.Deploy.0 = Debug|iPhone
 		{F316DD9E-8D5B-4088-8E23-0164D793C517}.Release|Any CPU.ActiveCfg = Release|iPhone
 		{F316DD9E-8D5B-4088-8E23-0164D793C517}.Release|iPhone.ActiveCfg = Release|iPhone
 		{F316DD9E-8D5B-4088-8E23-0164D793C517}.Release|iPhone.Build.0 = Release|iPhone

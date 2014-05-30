@@ -4,8 +4,8 @@ using Android.Content.PM;
 using Android.OS;
 using MySynopsis.UI;
 using MySynopsis.UI.Pages;
-using Xamarin.QuickUI;
-using Xamarin.QuickUI.Platform.Android;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
 
 namespace MySynopsis.Android
 {
@@ -17,7 +17,7 @@ namespace MySynopsis.Android
         {
             base.OnCreate(bundle);
 
-            QuickUI.Init(this, bundle);
+            Forms.Init(this, bundle);
             if (!_initialised)
             {
                 Factory.RegisterPages(this);

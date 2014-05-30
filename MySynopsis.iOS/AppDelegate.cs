@@ -6,7 +6,7 @@ using Microsoft.WindowsAzure.MobileServices;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
-using Xamarin.QuickUI;
+using Xamarin.Forms;
 
 namespace MySynopsis.iOS
 {
@@ -33,7 +33,7 @@ namespace MySynopsis.iOS
 
             // If you have defined a view, add it here:
             // window.RootViewController  = navigationController;
-            QuickUI.Init();
+            Forms.Init();
 
 
             //window.RootViewController = new NavigationPage(new MeterReadingEntryPage(new MeterReadingEntryViewModel())).GetViewController();

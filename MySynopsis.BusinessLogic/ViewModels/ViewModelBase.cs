@@ -19,6 +19,5 @@ namespace MySynopsis.BusinessLogic.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string Title { get; set; }
     }
 }

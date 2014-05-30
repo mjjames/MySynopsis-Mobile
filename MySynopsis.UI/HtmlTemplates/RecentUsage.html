@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+<style>
+#chart{
+	width:100%;
+    min-height:700px;
+}
+</style>
+    <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="jquery.flot.min.js"></script>
+    <script type="text/javascript" src="jquery.flot.time.min.js"></script>
+    <script type="text/javascript">
+        var data = [];
+        $(function () {
+            $.plot("#chart", [data], {
+                xaxis: { mode: "time" }
+            });
+            $("#timeFrame").text(window.location.hash)
+        });
+    </script>
+</head>
+<body>
+    <h1 id="timeFrame"></h1>
+
+    <div id="chart"></div>
+
+</body>
+</html>

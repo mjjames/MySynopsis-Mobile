@@ -16,7 +16,7 @@ using MySynopsis.BusinessLogic.Mocks;
 using MySynopsis.UI;
 using MySynopsis.UI.Pages;
 using MySynopsis.BusinessLogic;
-using Xamarin.QuickUI;
+using Xamarin.Forms;
 
 namespace MySynopsis.Android
 {
@@ -38,13 +38,13 @@ namespace MySynopsis.Android
         {
             Func<MobileServiceAuthenticationProvider, Task<MobileServiceUser>> authenticate = async (provider) => await ServiceClient.LoginAsync(context, provider);
             return new UserLoginService(GetUserService(), authenticate);
-           // var mockService = new MockUserService();
-           // mockService.SetExpectedUserId(MySynopsis.BusinessLogic.Mocks.MockUserService.ExpectedUserStatus.UnregisteredUser);
-           // Func<MobileServiceAuthenticationProvider, Task<MobileServiceUser>> login = (provider) =>
-           //{
-           //    return Task.FromResult(new MobileServiceUser("56565467546757"));
-           //};
-           // return new UserLoginService(mockService, login);
+            // var mockService = new MockUserService();
+            // mockService.SetExpectedUserId(MySynopsis.BusinessLogic.Mocks.MockUserService.ExpectedUserStatus.UnregisteredUser);
+            // Func<MobileServiceAuthenticationProvider, Task<MobileServiceUser>> login = (provider) =>
+            //{
+            //    return Task.FromResult(new MobileServiceUser("56565467546757"));
+            //};
+            // return new UserLoginService(mockService, login);
         }
 
         private static IUserService GetUserService()
@@ -96,12 +96,21 @@ namespace MySynopsis.Android
                 return page;
             });
 
+            PageLocator.Register<RecentUsagePage>(delegate(object state)
+            {
+                return new RecentUsagePage("file:///android_asset/", state as User);
+            });
+
             PageLocator.Register<TabbedPage>(delegate
             {
                 return new TabbedPage
                 {
-                    new NavigationPage(PageLocator.Get<HomePage>()){ Title = "Home"},
-                    new NavigationPage(){Title = "New Reading", Name = "RecordingReading"}
+                    Children = {
+                        new NavigationPage(PageLocator.Get<HomePage>()){ Title = "Home"},
+                        new NavigationPage(){Title = "New Reading", ClassId = "RecordingReading"},
+                        new NavigationPage(){Title = "Recent Usage", ClassId = "RecentUsage"},
+                        new NavigationPage(){Title = "Settings", ClassId = "Settings"}
+                    }
                 };
             });
         }

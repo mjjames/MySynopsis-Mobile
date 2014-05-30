@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.QuickUI;
+using Xamarin.Forms;
 
 namespace MySynopsis.UI.Pages
 {
@@ -15,10 +15,9 @@ namespace MySynopsis.UI.Pages
         public RecordReadingsPage(RecordReadingsViewModel viewModel)
         {
             _viewModel = viewModel;
-            _viewModel.Title = PageResources.RecordReadingsTitle;
+            Title = PageResources.RecordReadingsTitle;
             BindingContext = _viewModel;
 
-            SetBinding(TitleProperty, new Binding("Title", BindingMode.OneWay));
             SetBinding(IsBusyProperty, new Binding("IsPersisting", BindingMode.OneWay));
             _viewModel.PropertyChanged += async (sender, args) =>{
                 if(args.PropertyName == "IsFaulted" && _viewModel.IsFaulted){
@@ -26,17 +25,17 @@ namespace MySynopsis.UI.Pages
                 }
             };
 
-            var layout = new GridLayout
+            var layout = new Grid
             {
-                DefaultColumnSpacing = 10,
-                DefaultRowSpacing = 20,
+                ColumnSpacing = 10,
+                RowSpacing = 20,
                 Padding = new Thickness(5, 10)
             };
             
             for (var i = 0; i < _viewModel.MeterReadings.Count; i++)
             {
                 var reading = _viewModel.MeterReadings[i];
-                layout.AddVertical(new Label
+                layout.Children.AddVertical(new Label
                 {
                     Text = reading.MeterName,
                     VerticalOptions = LayoutOptions.Center
@@ -49,7 +48,7 @@ namespace MySynopsis.UI.Pages
                     HorizontalOptions = LayoutOptions.FillAndExpand
                 };
                 readingEntry.SetBinding<DataReadingViewModel>(Entry.TextProperty, vm => vm.Reading, BindingMode.TwoWay, new LongConverter());
-                layout.Add(readingEntry, 1, i);
+                layout.Children.Add(readingEntry, 1, i);
             }
 
             var persist = new Button
@@ -58,7 +57,7 @@ namespace MySynopsis.UI.Pages
             };
             persist.SetBinding<RecordReadingsViewModel>(Button.CommandProperty, vm => vm.RecordReadings);
             
-            layout.AddVertical(persist);
+            layout.Children.AddVertical(persist);
             Content = layout;
         }
     }

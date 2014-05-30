@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.QuickUI;
+using Xamarin.Forms;
 
 namespace MySynopsis.UI.Pages
 {
@@ -16,7 +16,7 @@ namespace MySynopsis.UI.Pages
         public LoginPage(LoginViewModel viewModel)
         {
             _viewModel = viewModel;
-            _viewModel.Title = PageResources.LoginTitle;
+            Title = PageResources.LoginTitle;
             BindingContext = _viewModel;
 
             SetBinding(TitleProperty, new Binding("Title", BindingMode.OneWay));
@@ -35,7 +35,7 @@ namespace MySynopsis.UI.Pages
             };
             //todo: itemsource binding errors
             //_providerList.SetBinding(ListView.ItemSourceProperty, new Binding("Providers", BindingMode.OneWay));
-            _providerList.ItemSource = _viewModel.Providers;
+            _providerList.ItemsSource = _viewModel.Providers;
             _providerList.SetBinding(ListView.SelectedItemProperty, new Binding("SelectedProvider", BindingMode.TwoWay));
             _providerList.ItemTemplate.SetBinding(TextCell.TextProperty, new Binding("Name"));
 
@@ -45,10 +45,10 @@ namespace MySynopsis.UI.Pages
 
             var layout = new StackLayout
             {
-                Orientation = StackLayout.StackOrientation.Vertical
+                Orientation = StackOrientation.Vertical
             };
-            layout.Add(_loading);
-            layout.Add(_providerList);
+            layout.Children.Add(_loading);
+            layout.Children.Add(_providerList);
 
             Content = layout;
             _viewModel.IsAuthenticating = true;
