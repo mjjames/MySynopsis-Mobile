@@ -10,5 +10,14 @@ namespace MySynopsis.BusinessLogic.Services
     public interface IDataReadingService
     {
         Task PersistReadings(IEnumerable<DataReading> readings);
+        Task<IList<Models.BaseDataReading>> ReadingsForMeterAndDateRange(Guid meterId, TimePeriod period);
+    }
+
+    public enum TimePeriod
+    {
+        Week,
+        Month,
+        Quarter,
+        Year
     }
 }

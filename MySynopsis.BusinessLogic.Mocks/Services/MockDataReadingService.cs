@@ -17,5 +17,10 @@ namespace MySynopsis.BusinessLogic.Mocks.Services
             PersistAction(readings);
             return Task.FromResult(new object());
         }
+
+        public Task<IList<BaseDataReading>> ReadingsForMeterAndDateRange(Guid meterId, TimePeriod period)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

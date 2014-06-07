@@ -16,7 +16,8 @@ namespace MySynopsis.BusinessLogic.Tests
         {
             var user = GetUser();
             var mockService = new MockDataReadingService();
-            var vm = new RecordReadingsViewModel(user, mockService);
+            var mockTorch = new MockTorchService();
+            var vm = new RecordReadingsViewModel(user, mockService, mockTorch);
             vm.MeterReadings.First().Reading = 6780;
             Assert.False(vm.RecordReadings.CanExecute(null));
         }
@@ -52,7 +53,8 @@ namespace MySynopsis.BusinessLogic.Tests
         {
             var user = GetUser();
             var mockService = new MockDataReadingService();
-            var vm = new RecordReadingsViewModel(user, mockService);
+            var mockTorch = new MockTorchService();
+            var vm = new RecordReadingsViewModel(user, mockService, mockTorch);
             Assert.False(vm.RecordReadings.CanExecute(null));
         }
 
@@ -61,7 +63,8 @@ namespace MySynopsis.BusinessLogic.Tests
         {
             var user = GetUser();
             var mockService = new MockDataReadingService();
-            var vm = new RecordReadingsViewModel(user, mockService);
+            var mockTorch = new MockTorchService();
+            var vm = new RecordReadingsViewModel(user, mockService, mockTorch);
             vm.MeterReadings.First().Reading = 6780;
             vm.MeterReadings.Last().Reading = 6785;
             vm.IsPersisting = true;
@@ -73,7 +76,8 @@ namespace MySynopsis.BusinessLogic.Tests
         {
             var user = GetUser();
             var mockService = new MockDataReadingService();
-            var vm = new RecordReadingsViewModel(user, mockService);
+            var mockTorch = new MockTorchService();
+            var vm = new RecordReadingsViewModel(user, mockService, mockTorch);
             vm.MeterReadings.First().Reading = 6780;
             vm.MeterReadings.Last().Reading = 6785;
 
@@ -85,7 +89,8 @@ namespace MySynopsis.BusinessLogic.Tests
         {
             var user = GetUser();
             var mockService = new MockDataReadingService();
-            var vm = new RecordReadingsViewModel(user, mockService);
+            var mockTorch = new MockTorchService();
+            var vm = new RecordReadingsViewModel(user, mockService, mockTorch);
             var v = 0;
             vm.RecordReadings.CanExecuteChanged += (sender, args) =>
             {
@@ -100,7 +105,8 @@ namespace MySynopsis.BusinessLogic.Tests
         {
             var user = GetUser();
             var mockService = new MockDataReadingService();
-            var vm = new RecordReadingsViewModel(user, mockService);
+            var mockTorch = new MockTorchService();
+            var vm = new RecordReadingsViewModel(user, mockService, mockTorch);
             var v = 0;
             vm.RecordReadings.CanExecuteChanged += (sender, args) =>
             {
@@ -122,7 +128,8 @@ namespace MySynopsis.BusinessLogic.Tests
         {
             var user = GetUser();
             var mockService = new MockDataReadingService();
-            var vm = new RecordReadingsViewModel(user, mockService);
+            var mockTorch = new MockTorchService();
+            var vm = new RecordReadingsViewModel(user, mockService, mockTorch);
             Assert.Equal(2, vm.MeterReadings.Count);
         }
 
@@ -130,8 +137,9 @@ namespace MySynopsis.BusinessLogic.Tests
         public void PersistReadingsRaisesIsPersistingTrueWhenStarted()
         {
             var mockService = new MockDataReadingService();
+            var mockTorch = new MockTorchService();
             var user = GetUser();
-            var vm = new RecordReadingsViewModel(user, mockService);
+            var vm = new RecordReadingsViewModel(user, mockService, mockTorch);
          
             Assert.PropertyChanged(vm, "IsPersisting", () => vm.RecordReadings.Execute(null));
         }
@@ -140,10 +148,11 @@ namespace MySynopsis.BusinessLogic.Tests
         public void PersistReadingsRaisesPostPersistActionWhenSetAndPersistComplete()
         {
             var mockService = new MockDataReadingService();
+            var mockTorch = new MockTorchService();
             var user = GetUser();
             mockService.PersistAction = (readings) => { };
 
-            var vm = new RecordReadingsViewModel(user, mockService);
+            var vm = new RecordReadingsViewModel(user, mockService, mockTorch);
 
             var executed = false;
             vm.PostPersistAction = () =>
@@ -158,8 +167,9 @@ namespace MySynopsis.BusinessLogic.Tests
         public void PersistReadingsDoesntThrowWhenPostPersistActionWhenNotSetAndPersistComplete()
         {
             var mockService = new MockDataReadingService();
+            var mockTorch = new MockTorchService();
             var user = GetUser();
-            var vm = new RecordReadingsViewModel(user, mockService);
+            var vm = new RecordReadingsViewModel(user, mockService, mockTorch);
       
             var executed = false;
             vm.RecordReadings.Execute(null);
@@ -170,10 +180,11 @@ namespace MySynopsis.BusinessLogic.Tests
         public void ReadingValuesClearedAfterSuccessfulPersist()
         {
             var mockService = new MockDataReadingService();
+            var mockTorch = new MockTorchService();
             var user = GetUser();
             mockService.PersistAction = (readings) => { };
 
-            var vm = new RecordReadingsViewModel(user, mockService);
+            var vm = new RecordReadingsViewModel(user, mockService, mockTorch);
             vm.MeterReadings.First().Reading = 6780;
             vm.RecordReadings.Execute(null);
             Assert.Equal(0, vm.MeterReadings.First().Reading);

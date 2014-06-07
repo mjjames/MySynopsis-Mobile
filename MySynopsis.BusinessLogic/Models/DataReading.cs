@@ -2,12 +2,10 @@
 
 namespace MySynopsis.BusinessLogic.Models
 {
-    public class DataReading
+    public class DataReading : BaseDataReading
     {
         public Guid Id { get; set; }
-        public DateTime TimeStampUtc { get; set; }
-        public long Reading { get; set; }
-        public Guid MeterId { get; set; }
+
         public Guid UserId { get; set; }
     }
 }

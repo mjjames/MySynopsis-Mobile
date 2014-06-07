@@ -207,6 +207,7 @@ namespace MySynopsis.BusinessLogic.ViewModels
         private async Task PersistUserSetup(object obj)
         {
             IsPersisting = true;
+            _user.SignedUpUtc = DateTime.UtcNow;
             var user = await _userService.Persist(_user);
             _user = user;
             IsPersisting = false;
